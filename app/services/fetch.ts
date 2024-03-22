@@ -13,10 +13,6 @@ export async function getData(): Promise<ResponsePokemon[]>  {
     return finalData;
   };
 
-
-
-
-
 export async function getDataById(order: number): Promise<Pokemon[]>  {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${order}`);
     const pokemon : Pokemon[] = await response.json();

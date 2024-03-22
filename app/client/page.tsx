@@ -31,12 +31,12 @@ export default function ListPokemonCSR() {
     <div className='flex flex-row flex-wrap justify-evenly'>
       {finalData.map((pokemon, index) => (
         <div key={index}>
-          <div>
+          <div className="w-64 p-5">
             <Image
               src={pokemon.details[0].sprites.other.showdown.front_default}
               alt={pokemon.details[0].name}
-              width={90}
-              height={90}
+              width={50}
+              height={50}
             />
             <div>
               <h5>

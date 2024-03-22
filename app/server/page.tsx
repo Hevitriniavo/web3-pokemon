@@ -15,8 +15,8 @@ const finalData: ResponsePokemon[] = await getData();
             <Image
               src={pokemon.details[0].sprites.other.showdown.front_default}
               alt={pokemon.details[0].name}
-              width={200}
-              height={200}
+              width={50}
+              height={50}
             />
             <div>
               <h6>
