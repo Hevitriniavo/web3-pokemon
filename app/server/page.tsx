@@ -1,11 +1,11 @@
 import { Card } from "@mui/material";
 import React from 'react';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Pokemon, PokemonResult, ResponsePokemon } from "../types/type";
+import Image from "next/image";
 
 export async function getData(): Promise<ResponsePokemon[]> {
     const finalData: ResponsePokemon[] = [];
@@ -30,11 +30,11 @@ export default async function ListPokemon() {
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
       {finalData.map((pokemon, index) => (
         <Card key={index} sx={{ maxWidth: 345, margin: 2 }}>
-          <CardMedia
-            component="img"
-            height="140"
-            image={pokemon.details[0].sprites.front_default}
+         <Image
+            src={pokemon.details[0].sprites.front_default}
             alt={pokemon.details[0].name}
+            width={200}
+            height={200}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
