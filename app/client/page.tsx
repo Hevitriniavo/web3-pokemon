@@ -39,11 +39,14 @@ export default function ListPokemonCSR() {
               </h5>
             </div>
             <div>
-              <Link href={`/server/${pokemon.details[0].order}`}>View Details</Link>
+              <Link className='px-2 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-sm text-center font-serif' href={`/server/${pokemon.details[0].order}`}>View Details</Link>
             </div>
           </div>
         </div>
       ))}
+      <div className='flex items-center '>
+        <Link className='px-2 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-sm text-center font-serif' href={`/server`}>View SSR</Link>
+      </div>
     </div>
   );
 }

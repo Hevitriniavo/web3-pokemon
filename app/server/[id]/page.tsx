@@ -44,7 +44,7 @@ export default async function PokemonDetailsSSR({ params }: { params: { id: numb
         </div>
       </div>
       <div className="flex justify-evenly items-center mb-2 mt-7">
-      <Link href={`/server`} className='px-4 py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-center font-serif'>view pokemons</Link>
+        <Link href={`/server`} className='px-4 py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-center font-serif'>view pokemons</Link>
       </div>
     </div>
   );
