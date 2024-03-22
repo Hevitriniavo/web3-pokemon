@@ -4,24 +4,9 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Pokemon, PokemonResult, ResponsePokemon } from "../types/type";
+import {ResponsePokemon } from "../types/type";
 import Image from "next/image";
-
-export async function getData(): Promise<ResponsePokemon[]> {
-    const finalData: ResponsePokemon[] = [];
-
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon/');
-    const data = await response.json();
-
-    await Promise.all(data.results.map(async (pokemon: PokemonResult) => {
-        const response = await fetch(pokemon.url);
-        const pokemonDetail = await response.json();
-        finalData.push({ name: pokemon.name, details: [pokemonDetail] });
-    }));
-
-    return finalData;
-}
-
+import { getData } from "../services/fetch";
 
 export default async function ListPokemon() {
  const finalData: ResponsePokemon[] = await getData();
@@ -29,26 +14,30 @@ export default async function ListPokemon() {
  return (
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
       {finalData.map((pokemon, index) => (
-        <Card key={index} sx={{ maxWidth: 345, margin: 2 }}>
+       <div key={index}>
+        <Card  sx={{ maxWidth: 345, margin: 2 }}>
          <Image
-            src={pokemon.details[0].sprites.front_default}
-            alt={pokemon.details[0].name}
+            src={pokemon.details.sprites.front_default}
+            alt={pokemon.details.name}
             width={200}
             height={200}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {pokemon.details[0].name}
+              {pokemon.details.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Base Experience: {pokemon.details[0].base_experience}
+              Base Experience: {pokemon.details.base_experience}
             </Typography>
           </CardContent>
           <CardActions>
             <Button size="small">View Details</Button>
           </CardActions>
         </Card>
+       
+       </div>
       ))}
+     
     </div>
  );
 }

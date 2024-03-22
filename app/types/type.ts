@@ -108,5 +108,5 @@ export interface PokemonResult {
 
 export interface ResponsePokemon {
     name: string;
-    details: Pokemon[]
+    details: Pokemon
 }
