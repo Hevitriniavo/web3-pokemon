@@ -25,12 +25,14 @@ const finalData: ResponsePokemon[] = await getData();
               <h2>
                 Base Experience: {pokemon.details[0].base_experience}
               </h2>
+              <div className='flex items-center '>
+              <Link className='px-1 py-1 rounded-full bg-blue-500 hover:bg-blue-600 text-center font-serif' href={`/server/${pokemon.details[0].order}`}>View Details</Link>
             </div>
-            <div>
-              <Link href={`/server/${pokemon.details[0].order}`}>View Details</Link>
             </div>
           </div>
+          
         </div>
+
       ))}
 
     </div>
