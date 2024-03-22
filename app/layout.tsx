@@ -21,6 +21,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <title>List of pokemon</title>
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
         <CssBaseline/>
       <body>
