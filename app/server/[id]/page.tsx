@@ -4,8 +4,14 @@ import { Pokemon } from '@/app/types/type';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export async function generateMetadata({ params }:  { params: { id: number }}) {
+  return {
+    title: 'Detail of a pokemon order: ' + params.id,
+  }
+}
 export default async function PokemonDetailsSSR({ params }: { params: { id: number } }) {
   const pokemon: Pokemon = await getDataById(params.id);
+  const id = params?.id as number;
   return (
     <div className="container w-1/2 m-auto rounded border">
       <div className="flex justify-evenly items-center m-6">

@@ -3,6 +3,12 @@ import Image from "next/image";
 import { getData } from "../services/fetch";
 import Link from 'next/link';
 import { Pagination } from "@mui/material";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'List of Pokemons (SSR)',
+  description: 'List of Pokemons (SSR)',
+};
 
 export default async function ListPokemonSSR() {
   const finalData: ResponsePokemon[] = await getData('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50');
