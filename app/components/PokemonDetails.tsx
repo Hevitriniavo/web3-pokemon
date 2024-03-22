@@ -22,9 +22,9 @@ export default function PokemonDetails({ selectedPokemon, open, setOpen }: Pokem
     <Dialog open={open} onClose={handleClose}>
       {selectedPokemon && (
         <>
-          <DialogTitle>{selectedPokemon.details.name}</DialogTitle>
+          <DialogTitle>{selectedPokemon.details[0].name}</DialogTitle>
           <DialogContent>
-            <Typography>Base Experience: {selectedPokemon.details.base_experience}</Typography>
+            <Typography>Base Experience: {selectedPokemon.details[0].base_experience}</Typography>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Close</Button>

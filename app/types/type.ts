@@ -11,7 +11,11 @@ interface AbilityInfo {
 }
 
 interface Sprites {
-    front_default: string;
+    other: {
+        showdown: {
+            front_default: string;
+        }
+    }
 }
 
 interface Cry {
@@ -80,7 +84,7 @@ export interface Pokemon {
     game_indices: GameIndex[];
     height: number;
     held_items: HeldItem[];
-    id: number;
+    order: number;
     is_default: boolean;
     location_area_encounters: string;
     moves: MoveInfo[];
@@ -108,5 +112,6 @@ export interface PokemonResult {
 
 export interface ResponsePokemon {
     name: string;
-    details: Pokemon
+    url: string;
+    details: Pokemon[]
 }

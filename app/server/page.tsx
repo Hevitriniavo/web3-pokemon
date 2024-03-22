@@ -1,44 +1,39 @@
-import { Card } from "@mui/material";
 import React from 'react';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import {ResponsePokemon } from "../types/type";
+import { ResponsePokemon } from "../types/type";
 import Image from "next/image";
 import { getData } from "../services/fetch";
+import Link from 'next/link';
 
-export default async function ListPokemon() {
- const finalData: ResponsePokemon[] = await getData();
+export default async function ListPokemonSSR() {
+const finalData: ResponsePokemon[] = await getData();
 
- return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+  return (
+    <div className='flex flex-row flex-wrap justify-evenly'>
       {finalData.map((pokemon, index) => (
-       <div key={index}>
-        <Card  sx={{ maxWidth: 345, margin: 2 }}>
-         <Image
-            src={pokemon.details.sprites.front_default}
-            alt={pokemon.details.name}
-            width={200}
-            height={200}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {pokemon.details.name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Base Experience: {pokemon.details.base_experience}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">View Details</Button>
-          </CardActions>
-        </Card>
-       
-       </div>
+        <div key={index} className="w-64 p-5">
+          <div>
+            <Image
+              src={pokemon.details[0].sprites.other.showdown.front_default}
+              alt={pokemon.details[0].name}
+              width={200}
+              height={200}
+            />
+            <div>
+              <h6>
+                {pokemon.details[0].name}
+              </h6>
+              <h2>
+                Base Experience: {pokemon.details[0].base_experience}
+              </h2>
+            </div>
+            <div>
+              <Link href={`/server/${pokemon.details[0].order}`}>View Details</Link>
+            </div>
+          </div>
+        </div>
       ))}
-     
+
     </div>
- );
+  );
 }
 

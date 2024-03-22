@@ -8,8 +8,7 @@ import PokemonDetails from '../components/PokemonDetails';
 import { getData } from '../services/fetch';
 
 
-
-export default function ListPokemon() {
+export default function ListPokemonCSR() {
   const [finalData, setFinalData] = useState<ResponsePokemon[]>([]);
   const [open, setOpen] = useState<boolean>(false);
   const [selectedPokemon, setSelectedPokemon] = useState<ResponsePokemon | null>(null)
@@ -29,29 +28,28 @@ export default function ListPokemon() {
   }
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+    <div className='flex flex-row flex-wrap justify-evenly'>
       {finalData.map((pokemon, index) => (
         <div key={index}>
-          <Card sx={{ maxWidth: 345, margin: 2 }}>
+          <div>
             <Image
-              src={pokemon.details.sprites.front_default}
-              alt={pokemon.details.name}
-              width={200}
-              height={200}
-              objectFit="cover"
+              src={pokemon.details[0].sprites.other.showdown.front_default}
+              alt={pokemon.details[0].name}
+              width={90}
+              height={90}
             />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {pokemon.details.name}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Base Experience: {pokemon.details.base_experience}
-              </Typography>
-            </CardContent>
-            <CardActions>
+            <div>
+              <h5>
+                {pokemon.details[0].name}
+              </h5>
+              <h5>
+                Base Experience: {pokemon.details[0].base_experience}
+              </h5>
+            </div>
+            <div>
               <button onClick={() => toggleModal(pokemon)}>View Details</button>
-            </CardActions>
-          </Card>
+            </div>
+          </div>
         </div>
       ))}
       <PokemonDetails selectedPokemon={selectedPokemon} open={open} setOpen={setOpen} />

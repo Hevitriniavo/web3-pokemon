@@ -1,5 +1,5 @@
 "use client";
-import "./globals.scss";
+import "./globals.css";
 import { useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { darkTheme, lightTheme } from "./themes/theme";
