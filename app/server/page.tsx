@@ -2,9 +2,10 @@ import { ResponsePokemon } from "../types/type";
 import Image from "next/image";
 import { getData } from "../services/fetch";
 import Link from 'next/link';
+import { Pagination } from "@mui/material";
 
 export default async function ListPokemonSSR() {
-  const finalData: ResponsePokemon[] = await getData();
+  const finalData: ResponsePokemon[] = await getData('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50');
 
   return (
     <div>
@@ -39,6 +40,9 @@ export default async function ListPokemonSSR() {
         <div className='flex items-center justify-center py-7'>
           <Link className='px-2 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-sm text-center font-serif' href={`/client`}>View CSR</Link>
         </div>
+      </div>
+      <div className='flex items-center justify-center py-7'>
+      <Pagination count={50} color="primary" />
       </div>
     </div>
   );

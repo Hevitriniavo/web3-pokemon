@@ -5,19 +5,25 @@ import Image from 'next/image';
 import { ResponsePokemon } from "../types/type";
 import { getData } from '../services/fetch';
 import Link from 'next/link';
+import { Pagination } from '@mui/material';
 
 export default function ListPokemonCSR() {
   const [finalData, setFinalData] = useState<ResponsePokemon[]>([]);
+  const [initialPage,setInitialPage] = useState<number>(0)
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getData();
+      const data = await getData(`https://pokeapi.co/api/v2/pokemon/?offset=${initialPage}&limit=50`);
       setFinalData(data);
     };
 
     fetchData();
-  }, []);
+  }, [initialPage]);
 
+  const changePage = (event: React.ChangeEvent<unknown>, value: number) => {
+    setInitialPage(value);
+  }
+  
   return (
     <div>
       <header>
@@ -50,6 +56,14 @@ export default function ListPokemonCSR() {
       </div>
       <div className='flex items-center justify-center py-7'>
         <Link className='px-2 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-sm text-center font-serif' href={`/server`}>View SSR</Link>
+      </div>
+      <div className='flex items-center justify-center py-7'>
+      <Pagination
+        count={50} 
+        page={initialPage}
+        onChange={changePage}
+        color="primary"
+         />
       </div>
     </div>
   );

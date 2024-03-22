@@ -1,7 +1,7 @@
 import { Pokemon, PokemonResult, ResponsePokemon } from "../types/type";
 
-export async function getData(): Promise<ResponsePokemon[]>  {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50');
+export async function getData(url: string): Promise<ResponsePokemon[]>  {
+    const response = await fetch(url);
     const data = await response.json();
   
     const finalData: ResponsePokemon[] = await Promise.all(data.results.map(async (pokemon: PokemonResult) => {
