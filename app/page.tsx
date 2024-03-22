@@ -1,7 +1,4 @@
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-       Hello world !
-    </main>
-  );
+import { redirect } from "next/navigation";
+export function Redirect() {
+  redirect("/server");
 }

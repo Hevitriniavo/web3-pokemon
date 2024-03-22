@@ -10,8 +10,8 @@ export default async function PokemonDetailsSSR({ params }: { params: { id: numb
     <div className="container w-1/2 m-auto rounded border">
       <div className="flex justify-evenly items-center m-6">
         <div>
-          <h1 className="">Weight: {pokemon.weight}</h1>
-          <h1 className="">Height: {pokemon.height}</h1>
+          <h1>Weight: {pokemon.weight}</h1>
+          <h1>Height: {pokemon.height}</h1>
         </div>
         <Image
           src={pokemon.sprites.other.showdown.front_default}
@@ -24,21 +24,21 @@ export default async function PokemonDetailsSSR({ params }: { params: { id: numb
       </div>
       <div className='flex justify-evenly items-center'>
         <div>
-          <h1 className="">{pokemon.name}</h1>
-          <p className=''>Base experience: {pokemon.base_experience}</p>
+          <h1>{pokemon.name}</h1>
+          <p >Base experience: {pokemon.base_experience}</p>
         </div>
         <div>
           <h2 className="text-xl font-semibold">Abilités</h2>
           <ul className="flex flex-col space-y-1">
             {pokemon.abilities.map((abilityInfo, index) => (
-              <li key={index} className=''>{abilityInfo.ability.name} (Slot {abilityInfo.slot}, {abilityInfo.is_hidden ? 'caché' : 'visible'})</li>
+              <li key={index}>{abilityInfo.ability.name} (Slot {abilityInfo.slot}, {abilityInfo.is_hidden ? 'caché' : 'visible'})</li>
             ))}
           </ul>
         </div>
         <div>
           <ul className='flex flex-col space-y-1'>
             {pokemon.types.map((type, index) => (
-              <li key={index} className=''>{type.type.name} (Slot {type.slot})</li>
+              <li key={index}>{type.type.name} (Slot {type.slot})</li>
             ))}
           </ul>
         </div>

@@ -33,7 +33,7 @@ export default async function ListPokemonSSR() {
 
         </div>
       ))}
-      <div className='flex items-center '>
+      <div className='flex items-center py-7'>
         <Link className='px-2 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-sm text-center font-serif' href={`/client`}>View CSR</Link>
       </div>
     </div>

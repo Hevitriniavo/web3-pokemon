@@ -44,7 +44,7 @@ export default function ListPokemonCSR() {
           </div>
         </div>
       ))}
-      <div className='flex items-center '>
+      <div className='flex items-center py-7'>
         <Link className='px-2 py-2 rounded-full bg-blue-500 hover:bg-blue-600 text-sm text-center font-serif' href={`/server`}>View SSR</Link>
       </div>
     </div>
