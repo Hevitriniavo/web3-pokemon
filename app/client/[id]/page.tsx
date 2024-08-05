@@ -27,7 +27,7 @@ export default function PokemonDetailsCSR() {
 
   useEffect(() => {
     fetchPokemon()
-  }, [])
+  }, [fetchPokemon])
   
   return (pokemon != null && (
     <div className="container w-1/2 m-auto rounded border">
