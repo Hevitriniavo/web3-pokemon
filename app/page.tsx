@@ -1,4 +1,4 @@
 import { redirect } from "next/navigation";
-export function Redirect() {
+export default function Redirect() {
   redirect("/server");
 }
